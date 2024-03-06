@@ -1,10 +1,4 @@
----------------------
--- Vim Preferences --
----------------------
-
-vim.wo.number = true
-
--------------------------
+------------------------
 -- Plugin Installation --
 -------------------------
 
@@ -25,6 +19,30 @@ vim.opt.rtp:prepend(lazypath)
 -- Load lazy.nvim
 require("lazy").setup({
 	"neovim/nvim-lspconfig",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {}
+	},
+	{
+		"folke/twilight.nvim",
+		opts = {},
+	},
+	{
+    		"nvim-neo-tree/neo-tree.nvim",
+    		branch = "v3.x",
+    		dependencies = {
+			"nvim-lua/plenary.nvim",
+		      	"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		      	"MunifTanjim/nui.nvim",
+		      	-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
+	},
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = false,
+	}
 })
 
 -------------------
@@ -58,3 +76,11 @@ lspconfig.rust_analyzer.setup({
 		}
 	}
 })
+
+---------------------
+-- Vim Preferences --
+---------------------
+
+vim.wo.number = true
+vim.b.expandtab = true
+vim.cmd[[colorscheme tokyonight]]

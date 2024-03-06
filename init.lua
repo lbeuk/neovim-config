@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load lazy.nvim
 require("lazy").setup({
+	-- LSP support
 	"neovim/nvim-lspconfig",
 	{
 		"folke/tokyonight.nvim",
@@ -25,10 +26,12 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {}
 	},
+	-- Allows focusing on current code tree
 	{
 		"folke/twilight.nvim",
 		opts = {},
 	},
+	-- File tree support
 	{
     		"nvim-neo-tree/neo-tree.nvim",
     		branch = "v3.x",
@@ -39,9 +42,51 @@ require("lazy").setup({
 		      	-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		}
 	},
+	-- Icons in file tree, requires a nerd font
 	{
 		"nvim-tree/nvim-web-devicons",
 		lazy = false,
+	},
+	-- Autocompletion support
+	{
+		"ms-jpq/coq_nvim",
+		lazy = false,
+	},
+	{
+		"ms-jpq/coq.artifacts",
+		branch = "artifacts",
+		lazy = false,
+	},
+	{
+		"ms-jpq/coq.thirdparty",
+		branch = "3p",
+		lazy = false,
+	},
+	-- Auto close support
+	{
+		"m4xshen/autoclose.nvim",
+		lazy = false,
+	}
+})
+
+------------------
+-- Auto closing --
+------------------
+
+require("autoclose").setup({
+	keys = {
+		["("] = { escape = false, close = true, pair = "()" },
+	      	["["] = { escape = false, close = true, pair = "[]" },
+	      	["{"] = { escape = false, close = true, pair = "{}" },
+
+	      	[">"] = { escape = true, close = false, pair = "<>" },
+	      	[")"] = { escape = true, close = false, pair = "()" },
+	      	["]"] = { escape = true, close = false, pair = "[]" },
+	      	["}"] = { escape = true, close = false, pair = "{}" },
+
+	      	['"'] = { escape = true, close = true, pair = '""' },
+	      	["'"] = { escape = true, close = true, pair = "''" },
+	      	["`"] = { escape = true, close = true, pair = "``" }
 	}
 })
 

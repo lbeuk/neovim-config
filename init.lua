@@ -1,5 +1,12 @@
--- Vim preferences
+---------------------
+-- Vim Preferences --
+---------------------
+
 vim.wo.number = true
+
+-------------------------
+-- Plugin Installation --
+-------------------------
 
 -- Bootstrap lazy.nvim (https://github.com/folke/lazy.nvim)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -19,6 +26,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"neovim/nvim-lspconfig",
 })
+
+-------------------
+-- Rust-analyzer --
+-------------------
 
 local lspconfig = require'lspconfig'
 

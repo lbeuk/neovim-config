@@ -66,8 +66,16 @@ require("lazy").setup({
 	{
 		"m4xshen/autoclose.nvim",
 		lazy = false,
+	},
+	-- TODO comment support
+	{
+		"folke/todo-comments.nvim",
+		lazy=false,
+		dependencies = {"nvim-lua/plenary.nvim"}
 	}
 })
+
+require("todo-comments").setup()
 
 ------------------
 -- Auto closing --
@@ -90,9 +98,9 @@ require("autoclose").setup({
 	}
 })
 
--------------------
--- Rust-analyzer --
--------------------
+-----------------
+-- LSP support --
+-----------------
 
 local lspconfig = require'lspconfig'
 
@@ -122,6 +130,13 @@ lspconfig.rust_analyzer.setup({
 	}
 })
 
+lspconfig.ccls.setup({
+	init_options = {
+		cache = {
+			directory = ".ccls-cache";
+		};
+	}
+})
 ---------------------
 -- Vim Preferences --
 ---------------------

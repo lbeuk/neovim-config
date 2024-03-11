@@ -144,3 +144,9 @@ lspconfig.ccls.setup({
 vim.wo.number = true
 vim.b.expandtab = true
 vim.cmd[[colorscheme tokyonight]]
+
+---------------------
+-- Vim Keybindings --
+---------------------
+
+vim.keymap.set("n", "<C-b>", "<Cmd>Neotree toggle<CR>") -- Ctrl+b :: Toggles/selects filesystem viewer
